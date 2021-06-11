@@ -1,48 +1,38 @@
 import express from 'express';
-import TemplatesService from '../services/templates.service';
+import Service from '../services/templates.service';
 
 class TemplatesController {
-    
+
     async list(req: express.Request, res: express.Response) {
-        const templates = await TemplatesService.list(100, 0);
-        res.status(200).send(templates);
-        // res.status(200).send("list");
-        
+        const services = await Service.list(100, 0);
+        res.status(200).send(services);
     }
 
     async getById(req: express.Request, res: express.Response) {
-        const template = await TemplatesService.readById(req.body.id);
-        res.status(200).send(template);
-        // res.status(200).send("getById");
+        const service = await Service.readById(req.body.id);
+        res.status(200).send(service);
     }
 
     async create(req: express.Request, res: express.Response) {
-        const templateId = await TemplatesService.create(req.body);
-        res.status(201).send({ id: templateId });
-        // res.status(200).send(req.body);
+        const Id = await Service.create(req.body);
+        res.status(201).send({ id: Id });
     }
 
     async patch(req: express.Request, res: express.Response) {
-        await TemplatesService.patchById(req.body.id, req.body)
+        await Service.patchById(req.body.id, req.body)
         res.status(204).send();
-        res.status(200).send("patch");
-        // res.status(200).send(req.body);
     }
 
     async put(req: express.Request, res: express.Response) {
-        await TemplatesService.putById(req.body.id, req.body)
+        await Service.putById(req.body.id, req.body)
         res.status(204).send();
-        res.status(200).send("put");
-        // res.status(200).send(req.body);
     }
 
     async remove(req: express.Request, res: express.Response) {
-        await TemplatesService.deleteById(req.body.id);
+        await Service.deleteById(req.body.id);
         res.status(204).send();
-        res.status(200).send("remove");
-        // res.status(200).send(req.body);
     }
 
 }
 
-export default new TemplatesController;
+export default new TemplatesController();

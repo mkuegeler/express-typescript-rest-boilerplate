@@ -1,3 +1,4 @@
+// Start server
 import express from 'express';
 import server from './server.json';
 import { CommonRoutesConfig, TemplatesRoutes, ItemsRoutes } from './routes/index';

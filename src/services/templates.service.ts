@@ -6,27 +6,27 @@ import { PutTemplateDto } from '../models/dto/put.template.dto';
 
 class TemplatesService implements CRUD {
     async create(resource: CreateTemplateDto) {
-        return TemplatesDao.addTemplate(resource);
+        return TemplatesDao.add(resource);
     }
 
     async deleteById(id: string) {
-        return TemplatesDao.removeTemplateById(id);
+        return TemplatesDao.removeById(id);
     }
 
     async list(limit: number, page: number) {
-        return TemplatesDao.getTemplates();
+        return TemplatesDao.get();
     }
 
     async patchById(id: string, resource: PatchTemplateDto): Promise<any> {
-        return TemplatesDao.patchTemplateById(id, resource);
+        return TemplatesDao.patchById(id, resource);
     }
 
     async putById(id: string, resource: PutTemplateDto): Promise<any> {
-        return TemplatesDao.putTemplateById(id, resource);
+        return TemplatesDao.putById(id, resource);
     }
 
     async readById(id: string) {
-        return TemplatesDao.getTemplateById(id);
+        return TemplatesDao.getById(id);
     }
 
 }

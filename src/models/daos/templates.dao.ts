@@ -10,20 +10,20 @@ class TemplatesDao {
     constructor() {
         console.log('Created new instance of TemplatesDao');
     }
-    async addTemplate(template: CreateTemplateDto) {
+    async add(template: CreateTemplateDto) {
         template.id = nanoid();
         this.templates.push(template);
         return template.id;
     }
-    async getTemplates() {
+    async get() {
         return this.templates;
     }
 
-    async getTemplateById(templateId: string) {
+    async getById(templateId: string) {
         return this.templates.find((template: { id: string }) => template.id === templateId);
     }
     // Update will mean either overwriting the complete object (as a PUT) or just parts of the object as a PATCH
-    async putTemplateById(templateId: string, template: PutTemplateDto) {
+    async putById(templateId: string, template: PutTemplateDto) {
         const objIndex = this.templates.findIndex(
             (obj: { id: string }) => obj.id === templateId
         );
@@ -31,7 +31,7 @@ class TemplatesDao {
         return `${template.id} updated via put`;
     }
 
-    async patchTemplateById(templateId: string, template: PatchTemplateDto) {
+    async patchById(templateId: string, template: PatchTemplateDto) {
         const objIndex = this.templates.findIndex(
             (obj: { id: string }) => obj.id === templateId
         );
@@ -51,7 +51,7 @@ class TemplatesDao {
         return `${template.id} patched`;
     }
 
-    async removeTemplateById(templateId: string) {
+    async removeById(templateId: string) {
         const objIndex = this.templates.findIndex(
             (obj: { id: string }) => obj.id === templateId
         );
